@@ -10,9 +10,11 @@ app.use((req, res, next) => {
   next();
 });
 
+app.get('/', (req, res) => res.send('OK'));
+
 app.post('/recipe', async (req, res) => {
   try {
-    const ingredients = req.body.ingredients || 'some ingredients';
+    const ingredients = req.body.ingredients || 'pasta';
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
@@ -33,5 +35,5 @@ app.post('/recipe', async (req, res) => {
   }
 });
 
-const server = app.listen(process.env.PORT || 3000);
-server.timeout = 30000;
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, '0.0.0.0', () => console.log(`Server running on port ${PORT}`));
