@@ -23,7 +23,7 @@ app.post('/recipe', async (req, res) => {
         'anthropic-version': '2023-06-01'
       },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
+        'claude-sonnet-4-5'
         max_tokens: 1000,
         messages: [{ role: 'user', content: `Suggest a recipe using: ${ingredients}` }]
       })
